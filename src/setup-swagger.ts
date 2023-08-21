@@ -5,9 +5,9 @@ export function setupSwagger(app: INestApplication): void {
     const documentBuilder = new DocumentBuilder()
         .setTitle('API')
         .setVersion('1.0')
-        .setContact("Tanishq Chawda", "https://joinjumbo.apiurl.in", "tanishq.happy@gmail.com")
+        .setContact("Tanishq Chawda", "https://troop.apiurl.in", "tanishq.happy@gmail.com")
         .setDescription(
-            `###REST API for JoinJumbo Assignment`,
+            `###REST API for Troop Assignment`,
         )
         .addBearerAuth({
             description: `Please enter token in following format: Bearer <JWT>`,
