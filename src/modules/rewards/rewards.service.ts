@@ -21,14 +21,24 @@ export class RewardsService {
     async getUserRewards(request: CommonRequestUser): Promise<Rewards[]> {
 
         const user = await this.userService.findOne(request.user.userId);
-        console.log('====================================');
-        console.log(user);
-        console.log('====================================');
 
         return this.rewardsRepository
             .createQueryBuilder('reward')
             .leftJoinAndSelect('reward.referringUser', 'referringUser')
             .where('referringUser.userId = :referringUserId', { referringUserId: user?.userId })
+            .select([
+                'reward.rewardsId',
+                'reward.rewardAmount',
+                'referringUser.userId',
+                'referringUser.email',
+                'referringUser.fullName',
+                'referringUser.referralCode',
+                // Exclude any columns you don't need from the User entity
+                // 'referringUser.columnToExclude1',
+                // 'referringUser.columnToExclude2',
+            ])
+
+
             .getMany();
     }
 
