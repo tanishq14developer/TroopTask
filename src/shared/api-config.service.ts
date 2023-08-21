@@ -106,7 +106,10 @@ export class ApiConfigService {
             namingStrategy: new SnakeNamingStrategy(),
             ssl: {
                 rejectUnauthorized: false
-            }
+            },
+
+
+
 
         };
     }
