@@ -14,6 +14,7 @@ import { ApiConfigService } from './shared/api-config.service';
 import { SharedModule } from './shared/shared.module';
 import { ReferralsModule } from 'modules/referrals/referrals.module';
 import { RewardsModule } from 'modules/rewards/rewards.module';
+import { CouponRedeemModule } from 'modules/coupon-redeem/coupon-redeem.module';
 
 @Module({
     imports: [
@@ -32,6 +33,7 @@ import { RewardsModule } from 'modules/rewards/rewards.module';
         AuthModule,
         ReferralsModule,
         RewardsModule,
+        CouponRedeemModule,
         WinstonModule.forRoot({
             transports: [new winston.transports.Console()],
             // options
