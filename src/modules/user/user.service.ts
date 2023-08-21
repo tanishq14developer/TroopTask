@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -8,13 +8,16 @@ import * as bcrypt from 'bcrypt';
 import { UserRequestDto } from './dto/user-request.dto';
 import { generateReferralCode } from 'utils';
 import { ReferralsService } from 'modules/referrals/referrals.service';
+import { RewardsService } from 'modules/rewards/rewards.service';
 
 @Injectable()
 export class UserService {
     constructor(
         @InjectRepository(UserEntity)
         private readonly userRepository: Repository<UserEntity>,
-        private readonly referralService: ReferralsService
+        private readonly referralService: ReferralsService,
+        @Inject(forwardRef(() => RewardsService))
+        private readonly rewardsService: RewardsService
     ) { }
 
 
@@ -36,6 +39,7 @@ export class UserService {
         const savedUser = await this.userRepository.save(newUser);
         if (referredBy) {
             await this.referralService.createReferral(referredBy, savedUser);
+            await this.rewardsService.createReward(referredBy, savedUser, 10);
         }
         return savedUser;
     }

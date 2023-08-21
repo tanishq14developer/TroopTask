@@ -8,10 +8,4 @@ export class CreateReferralDto {
     @ApiProperty()
     referringUserId: string;
 
-
-
-
-
-
-
 }

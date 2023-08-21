@@ -31,6 +31,7 @@ export class AuthService {
                 fullName: newUser.fullName,
                 email: newUser.email,
                 accessToken: accessToken,
+                referralCode: newUser.referralCode,
             }), {
                 message: Message.SUCCESS,
                 displayMessage: Message.SUCCESS
@@ -48,6 +49,7 @@ export class AuthService {
                 fullName: user.fullName,
                 email: user.email,
                 accessToken: accessToken,
+                referralCode: user.referralCode,
             };
             return new ApiResponse<UserAuthDto | null>(this.userAuth(userAuthDto), {
                 message: Message.SUCCESS,
@@ -65,6 +67,7 @@ export class AuthService {
             fullName: user.fullName,
             email: user.email,
             accessToken: user.accessToken,
+            referralCode: user.referralCode,
 
 
         });
