@@ -7,7 +7,7 @@ import { UpdateReferralDto } from './dto/update-referral.dto';
 export class ReferralsController {
     constructor(private readonly referralsService: ReferralsService) { }
 
-    @Post()
+    /* @Post()
     create(@Body() createReferralDto: CreateReferralDto) {
 
     }
@@ -30,5 +30,5 @@ export class ReferralsController {
     @Delete(':id')
     remove(@Param('id') id: string) {
         return this.referralsService.remove(+id);
-    }
+    } */
 }

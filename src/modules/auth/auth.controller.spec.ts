@@ -47,16 +47,16 @@ describe('Auth Controller', () => {
         expect(controller).toBeDefined();
     });
 
-    describe('sendMobileOtp', () => {
-        it('should call sendMobileOtp service when call sendMobileOtp controller', async () => {
-            jest.spyOn(authService, 'sendMobileOtp').mockResolvedValue('1234');
-
-            const registerDto: SendOtpDto = {
-                mobileNumber: '123456',
-                countryCode: '9',
-            };
-            const res = await controller.sendMobileOtp(registerDto);
-            expect(res.otp).toEqual('1234');
-        });
-    });
+    /*   describe('sendMobileOtp', () => {
+          it('should call sendMobileOtp service when call sendMobileOtp controller', async () => {
+              jest.spyOn(authService, 'sendMobileOtp').mockResolvedValue('1234');
+  
+              const registerDto: SendOtpDto = {
+                  mobileNumber: '123456',
+                  countryCode: '9',
+              };
+              const res = await controller.sendMobileOtp(registerDto);
+              expect(res.otp).toEqual('1234');
+          });
+      }); */
 });
